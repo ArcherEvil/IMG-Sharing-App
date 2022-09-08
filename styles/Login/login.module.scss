@@ -1,0 +1,35 @@
+
+
+main.Main {
+    .LoginBox {
+        margin: 0;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 100vw;
+        p {
+            font-weight: 600;
+            color: #212121;
+            margin-top: 4rem;
+            font-size: 5rem;
+        }
+        button {
+            cursor: pointer;
+            border-collapse: separate; 
+            margin-top: 10rem;
+            outline: none;
+            border: none;
+            color: white;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            padding: 1rem 1.5rem;
+            font-size: 2rem;
+            background-color: #4285f4;
+            border-radius: 20px;
+            &:hover {
+                background-color: #326ac5;
+            }
+        }
+    }
+
+}
+@import url(https://fonts.googleapis.com/css?family=Roboto:500);

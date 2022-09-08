@@ -4,11 +4,12 @@ import Navbar from './Navbar';
 
 const Layout = ({ children }) => {
 	return (
-    <>
-      <Meta/>
-      <Navbar/>
-    </>
-  );
+		<>
+			<Meta />
+			<Navbar />
+			{children}
+		</>
+	);
 };
 
 export default Layout
