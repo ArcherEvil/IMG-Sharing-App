@@ -13,3 +13,9 @@ export const loginAction = (data) => {
         }
     }
 }
+
+export const DropDownAction = () => {
+    return {
+			type: 'PfpDropDown',
+		};
+}

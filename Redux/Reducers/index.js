@@ -6,8 +6,15 @@ const loginInfo = [false, {
 
 export const LoginInfoReducer = (state = loginInfo, action) => {
     switch (action.type) {
-        case 'log-on': return [true, {...action.loginInfo}]
+        case 'log-on': return [true, {...action.loginInfo[1]}]
         case 'log-off': return [false, {...loginInfo}]
+        default: return state
+    }
+}
+
+export const ProfileDropDownReducer = (state = false, action) => {
+    switch (action.type) {
+        case 'PfpDropDown': return !state
         default: return state
     }
 }

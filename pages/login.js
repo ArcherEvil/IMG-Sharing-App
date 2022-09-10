@@ -5,10 +5,22 @@ import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, addDoc, getDocs } from 'firebase/firestore';
 import { useSelector, useDispatch } from 'react-redux';
 import { loginAction } from '../Redux/Actions';
+import { useRouter } from 'next/router';
+import { useState, useEffect } from 'react';
 
 const login = ({users, IDs}) => {
-	const dispatch = useDispatch()
+	const router = useRouter();
 	const loginInf = useSelector((state) => state.login);
+	
+
+	useEffect(() => {
+		if (loginInf[0]) {
+			router.push('/')}
+	}
+	, [])
+
+
+	const dispatch = useDispatch()
 
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
@@ -16,7 +28,6 @@ const login = ({users, IDs}) => {
     const provider = new GoogleAuthProvider();
 	const db = getFirestore(app);
 
-	console.log(loginInf)
 
 
 	const LoginGoogle = async () => {
@@ -41,8 +52,11 @@ const login = ({users, IDs}) => {
 
 				}
 						dispatch(loginAction([true, userInfo]));
+						localStorage.setItem('cdl', JSON.stringify(userInfo));
+						localStorage.setItem('isCdl', true);
 
 			})
+
 
 
 			.catch((error) => {
@@ -55,12 +69,19 @@ const login = ({users, IDs}) => {
             
         }
     return (
+		<>
+		{loginInf[0] ? 
+		<div></div>
+		:
 			<main className={styles.Main}>
 				<div className={styles.LoginBox}>
                     <p>Login Page</p>
                     <button onClick={() => LoginGoogle()}>Login With Google</button>
                 </div>
 			</main>
+		
+		}
+		</>
 	);
 }
 export async function getStaticProps() {
