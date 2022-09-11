@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { loginAction } from '../Redux/Actions';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
+import Head from 'next/head';
 
 const login = ({users, IDs}) => {
 	const router = useRouter();
@@ -54,6 +55,7 @@ const login = ({users, IDs}) => {
 						dispatch(loginAction([true, userInfo]));
 						localStorage.setItem('cdl', JSON.stringify(userInfo));
 						localStorage.setItem('isCdl', true);
+						router.push('/');
 
 			})
 
@@ -70,6 +72,9 @@ const login = ({users, IDs}) => {
         }
     return (
 		<>
+		<Head>
+			<title>Login Page - IMG SHARING APP</title>
+		</Head>
 		{loginInf[0] ? 
 		<div></div>
 		:

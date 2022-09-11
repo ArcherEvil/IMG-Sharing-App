@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import styles from '../styles/Navbar/Navbar.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import Image from 'next/image';
-import { DropDownAction, loginAction } from '../Redux/Actions';
+import { DropDownAction, loginAction, NewPostAction } from '../Redux/Actions';
 
 
 
@@ -51,20 +51,23 @@ const Profile = ({isLogged, data}) => {
 	return (
 		<>
 			{isLogged ? (
-				<div onClick={() => dispatch(DropDownAction())} className={styles.Profile}>
-					<div className={styles.ProfileImg}>
-						<Image
-						src={`/api/imagefetcher?url=${encodeURIComponent(data.Photo)}`}
-						width={50}
-						height={50}>
+				<span>
+					<NewPost />
+					<div onClick={() => dispatch(DropDownAction())} className={styles.Profile}>
+						<div className={styles.ProfileImg}>
+							<Image
+							src={`/api/imagefetcher?url=${encodeURIComponent(data.Photo)}`}
+							width={50}
+							height={50}>
 
-						</Image>
+							</Image>
+						</div>
+						{DropDownState ? 
+						<DropDownMenu/>
+						:
+						<></>}
 					</div>
-					{DropDownState ? 
-					<DropDownMenu/>
-				:
-				<></>}
-				</div>
+				</span>
 			) : (
 				<button onClick={() => Login()} className={styles.Login}>
 					Login
@@ -73,5 +76,19 @@ const Profile = ({isLogged, data}) => {
 		</>
 	);
 };
+
+const NewPost = () => {
+	const dispatch = useDispatch();
+
+	return (
+			<button
+			onClick={() => dispatch(NewPostAction())}
+				className={styles.NewPost}
+			>
+				New Post
+			</button>
+
+	);
+}
 
 export default Navbar;

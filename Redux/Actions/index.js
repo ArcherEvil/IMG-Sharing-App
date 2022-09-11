@@ -19,3 +19,8 @@ export const DropDownAction = () => {
 			type: 'PfpDropDown',
 		};
 }
+export const NewPostAction = () => {
+    return {
+			type: 'NewPost',
+		};
+}

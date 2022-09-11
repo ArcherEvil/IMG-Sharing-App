@@ -18,3 +18,9 @@ export const ProfileDropDownReducer = (state = false, action) => {
         default: return state
     }
 }
+export const NewPostReducer = (state = false, action) => {
+    switch (action.type) {
+        case 'NewPost': return !state
+        default: return state
+    }
+}
